@@ -18,23 +18,28 @@ export default function Skyline() {
       width: '100%', 
       height: '100%', 
       background: 'radial-gradient(circle, #00002E 30%, #000016 70%, #000000)'
-  }}>
-      <MenuBar parallax={parallax}/>
-      <Parallax ref={parallax} pages={5}>
-        <Landing parallax={parallax} />
-        <ParallaxLayer offset={1} speed={1} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-          <Training parallax={parallax} />
-        </ParallaxLayer>
-        <ParallaxLayer offset={2} speed={1} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-          <Services parallax={parallax} />
-        </ParallaxLayer>
-        <ParallaxLayer offset={2} speed={1} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-          <About parallax={parallax} />
-        </ParallaxLayer>
-        <ParallaxLayer offset={4} speed={1} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-          <Contact parallax={parallax} navigate={navigate}/>  
-        </ParallaxLayer>
-      </Parallax>
+    }}>
+            <div className="flex flex-col">
+
+        <Parallax ref={parallax} pages={5}>
+          <ParallaxLayer offset={0} speed={0} sticky={{start:0, end: 5}}>
+            <MenuBar parallax={parallax}/>
+          </ParallaxLayer>
+          <Landing parallax={parallax} />
+          <ParallaxLayer offset={1} speed={1} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <Training parallax={parallax} />
+          </ParallaxLayer>
+          <ParallaxLayer offset={2} speed={1} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <Services parallax={parallax} />
+          </ParallaxLayer>
+          <ParallaxLayer offset={2} speed={1} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <About parallax={parallax} />
+          </ParallaxLayer>
+          <ParallaxLayer offset={4} speed={1} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <Contact parallax={parallax} navigate={navigate}/>  
+          </ParallaxLayer>
+        </Parallax>
+      </div>
     </div>
   )
 }

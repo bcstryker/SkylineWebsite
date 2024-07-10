@@ -60,10 +60,9 @@ const Landing: React.FC<{ parallax: any }> = ({ parallax }) => {
             offset={0}
             speed={-5}
             factor={1}
-            onClick={() => parallax.current.scrollTo(1)}
             className="flex items-center justify-center"
         >
-            <svg viewBox="0 0 1000 400" className="city-skyline"> {/* Increased viewBox height */}
+            <svg viewBox="0 0 1000 400" className="city-skyline">
                 <path id="path" ref={pathRef} d={pathData} />
             </svg>
         </ParallaxLayer>

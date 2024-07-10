@@ -6,6 +6,7 @@
     align-items: center;
     padding: 6vh 20vw;
     height: 4vh;
+    backdrop-filter: blur(10px);
 }
 
 .menu-bar-link {
