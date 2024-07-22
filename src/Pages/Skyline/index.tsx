@@ -25,7 +25,14 @@ export default function Skyline() {
           <ParallaxLayer offset={0} speed={0} sticky={{start:0, end: 5}}>
             <MenuBar parallax={parallax}/>
           </ParallaxLayer>
-          <Landing parallax={parallax} />
+          <ParallaxLayer
+            offset={0}
+            speed={-5}
+            factor={1}
+            className="flex"
+        >
+            <Landing parallax={parallax} />
+          </ParallaxLayer>
           <ParallaxLayer offset={1} speed={1} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
             <Training parallax={parallax} />
           </ParallaxLayer>

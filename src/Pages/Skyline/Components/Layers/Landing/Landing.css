@@ -24,3 +24,7 @@ svg {
         stroke-dashoffset: 0;
     }
 }
+
+.highlight {
+    color: #f1c40f;
+}

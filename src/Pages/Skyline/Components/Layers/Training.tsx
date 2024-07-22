@@ -39,29 +39,18 @@ const Training: React.FC<TrainingProps> = ({ parallax }) => {
           </p>
         </div>
       </ParallaxLayer>
-
-      {/* <ParallaxLayer speed={.5} style={{ opacity: 0.1 }}>
-        <img
-          alt="tmp"
-          src={url("cloud")}
-          style={{ display: "block", width: "20%", marginLeft: "40%" }}
-        />
-        <img
-          alt="tmp"
-          src={url("cloud")}
-          style={{ display: "block", width: "15%", marginLeft: "15%" }}
-        />
-      </ParallaxLayer> */}
       <ParallaxLayer
         speed={0.6}
         style={{
           display: "flex",
         }}
       >
-        <div className="accent-div ml-48 h-fit w-96">
+        <div className="accent-div ml-96 h-fit w-96">
           <p>Our courses are designed to provide hands-on experience and practical knowledge to help you succeed in your career.</p>
         </div>
-        <img className="w-[30vw] ml-[20vw]" alt="tmp" src={"road-to-knowledge.svg"} />
+        <div className="absolute right-96 top-48">
+          <img className="w-[30vw]" alt="tmp" src={"road-to-success.svg"} />
+        </div>
       </ParallaxLayer>
     </>
   );
