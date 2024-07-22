@@ -5,8 +5,8 @@ const phrases = [
   'autonomous',
   'motivated',
   'using life experiences',
-  'results-oriened',
-  'collaboraators',
+  'results-oriented',
+  'collaborators',
   'mastering new skills',
   'problem solvers'
 ];
