@@ -19,8 +19,7 @@
     letter-spacing: 1px;
 }
 
-/* Use @apply to create reusable component classes */
 .accent-div {
-    @apply bg-background-100 p-8 my-4 text-foreground rounded-md border border-accent relative;
+    @apply bg-delft_blue-100 p-16 my-4 text-foreground text-xl rounded-xl indent-4 border border-azure relative;
 }
   
