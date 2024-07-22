@@ -12,18 +12,6 @@ const Landing: React.FC<{ parallax: any }> = ({ parallax }) => {
             <div className="absolute right-64 top-96 w-[40vw]">
                 <img src='road-to-knowledge.svg' />
             </div>
-            <div className="absolute right-[25vw] top-32 w-[15vw]">
-                <img
-                    alt="tmp"
-                    src={url("cloud")}
-                    />
-            </div>
-            <div className="absolute left-[10vw] bottom-64 w-[18vw]">
-                <img
-                    alt="tmp"
-                    src={url("cloud")}
-                    />
-            </div>
         </div>
     );
 };
