@@ -27,39 +27,51 @@ export default function CourseDetail({ course }: { course: Course }) {
           </ul>
         </div>
 
-        <div className="course-detail-section">
-          <h3>Languages:</h3>
-          <ul>
-            {course.languages.map((language, index) => (
-              <li key={index}>{language.name}</li>
-            ))}
-          </ul>
-        </div>
+        {course.languages && (
+          <div className="course-detail-section">
+            <h3>Languages:</h3>
+            <ul>
+              {course.languages.map((language, index) => (
+                <li key={index}>{language.name}</li>
+              ))}
+            </ul>
+          </div>
+        )}
 
-        <div className="course-detail-section">
-          <h3>Description:</h3>
-          <div dangerouslySetInnerHTML={{ __html: decodeHtml(course.description) }} />
-        </div>
+        {course.description && (
+          <div className="course-detail-section">
+            <h3>Description:</h3>
+            <div dangerouslySetInnerHTML={{ __html: decodeHtml(course.description) }} />
+          </div>
+        )}
 
-        <div className="course-detail-section">
-          <h3>Objectives:</h3>
-          <div dangerouslySetInnerHTML={{ __html: decodeHtml(course.objective) }} />
-        </div>
+        {course.objective && (
+          <div className="course-detail-section">
+            <h3>Objectives:</h3>
+            <div dangerouslySetInnerHTML={{ __html: decodeHtml(course.objective) }} />
+          </div>
+        )}
 
-        <div className="course-detail-section">
-          <h3>Prerequisites:</h3>
-          <div dangerouslySetInnerHTML={{ __html: decodeHtml(course.prerequisites) }} />
-        </div>
+        {course.prerequisites && (
+          <div className="course-detail-section">
+            <h3>Prerequisites:</h3>
+            <div dangerouslySetInnerHTML={{ __html: decodeHtml(course.prerequisites) }} />
+          </div>
+        )}
 
-        <div className="course-detail-section">
-          <h3>Who Should Attend:</h3>
-          <div dangerouslySetInnerHTML={{ __html: decodeHtml(course.who_should_attend) }} />
-        </div>
+        {course.who_should_attend && (
+          <div className="course-detail-section">
+            <h3>Who Should Attend:</h3>
+            <div dangerouslySetInnerHTML={{ __html: decodeHtml(course.who_should_attend) }} />
+          </div>
+        )}
 
-        <div className="course-detail-section">
-          <h3>Course Outline:</h3>
-          <div dangerouslySetInnerHTML={{ __html: decodeHtml(course.outline) }} />
-        </div>
+        {course.outline && (
+          <div className="course-detail-section">
+            <h3>Course Outline:</h3>
+            <div dangerouslySetInnerHTML={{ __html: decodeHtml(course.outline) }} />
+          </div>
+        )}
       </div>
     </Layout>
   );
