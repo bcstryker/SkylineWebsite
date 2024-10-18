@@ -1,20 +1,28 @@
 import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 import axios from "axios";
-import Layout from "../../Components/Layout";
-import SearchBar from "./SearchBar";
+import CourseDetail from "./CourseDetail";
+import BrowseCatalog from "./BrowseCatalog";
 
 import "./Catalog.css";
-import CourseCard from "./CourseCard";
 
 export interface Course {
   id: number;
   name: string;
   title: string;
+  classification_id: number;
   classification_name: string;
   list_price: string;
+  discounted_list_price: number;
   duration: string;
+  digital_kit: number;
   delivery_types: { name: string; note: string }[];
   languages: { name: string; note: string }[];
+  description: string; // contains HTML string
+  objective: string; // contains HTML string
+  prerequisites: string; // contains HTML string
+  who_should_attend: string; // contains HTML string
+  outline: string; // contains HTML string
 }
 
 interface ApiResponse {
@@ -24,11 +32,15 @@ interface ApiResponse {
 }
 
 export default function Catalog() {
-  const [loading, setLoading] = useState<boolean>(true);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
   const [courses, setCourses] = useState<Course[]>([]);
   const [displayedCourses, setDisplayedCourses] = useState<Course[]>([]);
   const [searchTerm, setSearchTerm] = useState<string>("");
   const [error, setError] = useState<string | null>(null);
+
+  const location = useLocation();
+  const params = new URLSearchParams(location.search);
+  const courseParam = params.get("course");
 
   useEffect(() => {
     const fetchCourses = async () => {
@@ -42,7 +54,7 @@ export default function Catalog() {
           );
           setCourses(uniqueCourses);
           setDisplayedCourses(uniqueCourses);
-          setLoading(false);
+          setIsLoading(false);
         } else {
           setError("Failed to load courses");
         }
@@ -55,39 +67,31 @@ export default function Catalog() {
   }, []);
 
   useEffect(() => {
-    console.log("Search term changed: ", searchTerm);
     if (searchTerm) {
       const filteredCourses = courses.filter(
         (course) =>
-          course.title.toLowerCase().includes(searchTerm) ||
-          course.classification_name.toLowerCase().includes(searchTerm),
+          course.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          course.classification_name.toLowerCase().includes(searchTerm.toLowerCase()),
       );
-      console.log("Filtered courses: ", filteredCourses);
       setDisplayedCourses(filteredCourses);
     } else {
       setDisplayedCourses(courses);
     }
   }, [searchTerm, courses]);
 
-  return (
-    <Layout>
-      <div className="catalog-container">
-        <h1 className="catalog-header">Course Catalog</h1>
-        <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
-        {error && <p className="error-text">{error}</p>}
+  const selectedCourse = courseParam ? courses.find((course) => course.name === courseParam) : null;
 
-        {displayedCourses && displayedCourses.length > 0 ? (
-          <ul className="course-list">
-            {displayedCourses.map((course) => (
-              <CourseCard course={course} />
-            ))}
-          </ul>
-        ) : !error && loading ? (
-          <p className="loading-text">Loading courses...</p>
-        ) : (
-          <p className="loading-text">No courses found</p>
-        )}
-      </div>
-    </Layout>
+  if (selectedCourse) {
+    return <CourseDetail course={selectedCourse} />;
+  }
+
+  return (
+    <BrowseCatalog
+      loading={isLoading}
+      displayedCourses={displayedCourses}
+      searchTerm={searchTerm}
+      setSearchTerm={setSearchTerm}
+      error={error}
+    />
   );
 }
