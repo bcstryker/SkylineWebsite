@@ -1,0 +1,101 @@
+/* Header Styles */
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: white;
+}
+
+.logo img {
+  height: 50px;
+  margin-right: 4em;
+}
+
+.navbar {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+}
+
+.navbar li a {
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+}
+
+.contact-info a {
+  text-decoration: none;
+  color: black;
+}
+
+.search-icon button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.footer {
+  background-color: #f0f0f0;
+  padding: 20px;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+}
+
+.footer-section {
+  width: 23%;
+}
+
+.footer-section h4 {
+  margin-bottom: 10px;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-section ul li {
+  margin-bottom: 5px;
+}
+
+.footer-section ul li a {
+  text-decoration: none;
+  color: #333;
+}
+
+.newsletter-btn {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+}
+
+.social-media a {
+  margin-right: 10px;
+  font-size: 20px;
+  color: #333;
+}
+
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  border-top: 1px solid #ccc;
+  padding-top: 10px;
+}
+
+.footer-bottom ul {
+  list-style: none;
+  display: flex;
+  gap: 15px;
+}
+
+.footer-bottom ul li a {
+  text-decoration: none;
+  color: #333;
+}
