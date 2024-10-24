@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useRouteError } from "react-router-dom";
 import axios from "axios";
 import CourseDetail from "./CourseDetail";
 import BrowseCatalog from "./BrowseCatalog";
 
 import "./Catalog.css";
+import ChatAssistant from "../../Components/ChatAssistant";
 
 export interface Course {
   id: number;
@@ -40,7 +41,7 @@ export default function Catalog() {
 
   const location = useLocation();
   const params = new URLSearchParams(location.search);
-  const courseParam = params.get("course");
+  const courseParam = params.get("course")?.replace(/-/g, " ");
 
   useEffect(() => {
     const fetchCourses = async () => {
@@ -52,8 +53,11 @@ export default function Catalog() {
           const uniqueCourses = response.data.results.filter(
             (course, index, self) => index === self.findIndex((t) => t.id === course.id),
           );
-          setCourses(uniqueCourses);
-          setDisplayedCourses(uniqueCourses);
+          const nonZeroUniqueCourses = uniqueCourses.filter(
+            (course) => course.list_price !== "0.00" && course.duration !== "0 ",
+          );
+          setCourses(nonZeroUniqueCourses);
+          setDisplayedCourses(nonZeroUniqueCourses);
           setIsLoading(false);
         } else {
           setError("Failed to load courses");
@@ -79,19 +83,26 @@ export default function Catalog() {
     }
   }, [searchTerm, courses]);
 
-  const selectedCourse = courseParam ? courses.find((course) => course.name === courseParam) : null;
+  const selectedCourse = courseParam
+    ? courses.find(
+        (course) => course.name.toLowerCase() === courseParam.replace("%20", " ").toLowerCase(),
+      )
+    : null;
 
   if (selectedCourse) {
     return <CourseDetail course={selectedCourse} />;
   }
 
   return (
-    <BrowseCatalog
-      loading={isLoading}
-      displayedCourses={displayedCourses}
-      searchTerm={searchTerm}
-      setSearchTerm={setSearchTerm}
-      error={error}
-    />
+    <>
+      <BrowseCatalog
+        loading={isLoading}
+        displayedCourses={displayedCourses}
+        searchTerm={searchTerm}
+        setSearchTerm={setSearchTerm}
+        error={error}
+      />
+      <ChatAssistant />
+    </>
   );
 }
