@@ -1,5 +1,4 @@
-// src/store/store.ts
-import { configureStore } from "@reduxjs/toolkit";
+import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit";
 import chatReducer from "./chatSlice";
 
 const store = configureStore({
@@ -8,7 +7,14 @@ const store = configureStore({
   },
 });
 
-export type RootState = ReturnType<typeof store.getState>;
+// Properly type the dispatch to work with Thunks
 export type AppDispatch = typeof store.dispatch;
+export type RootState = ReturnType<typeof store.getState>;
+export type AppThunk<ReturnType = void> = ThunkAction<
+  ReturnType,
+  RootState,
+  unknown,
+  Action<string>
+>;
 
 export default store;

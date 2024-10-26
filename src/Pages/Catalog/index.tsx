@@ -102,7 +102,7 @@ export default function Catalog() {
         setSearchTerm={setSearchTerm}
         error={error}
       />
-      <ChatAssistant />
+      {!isLoading && <ChatAssistant />}
     </>
   );
 }
