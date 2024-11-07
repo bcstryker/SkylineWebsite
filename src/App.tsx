@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom";
-import Skyline from "./Pages/Skyline";
+import Skyline from "./Pages/Landing";
 import Skyline1 from "./Pages/Skyline1";
 import Zoomies from "./Pages/Test";
 import Catalog from "./Pages/Catalog";
